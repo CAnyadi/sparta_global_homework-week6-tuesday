@@ -9,7 +9,15 @@ class PostController < Sinatra::Base
 
   get "/" do
     @title_for_the_page = "Title"
-    @posts = Post.all
+    @book = Book.all
     erb :'posts/index'
   end
+
+  get "/new" do
+    @book = Post.new
+    erb :"posts/new"
+  end 
+
+
+
 end

@@ -1,0 +1,18 @@
+<form class="" action="/<%= @post.id%>" method="post">
+  <div class="">
+    <label>Title</label>
+    <input type="text" value ="<%= @post.title%>" name="title" placeholder="Enter a title">
+  </div>
+  <div class="">
+    <label>Body:</label>
+    <textarea name="body" rows="8" cols="80" placeholder= "Enter new body">
+      <%= @post.body%>
+    </textarea>
+  </div>
+  <div class="">
+  <% if (@post.id) %>
+    <input type="hidden" name="_method" value="PUT">
+    <% end %>
+    <input type="submit" value="Save Post">
+  </div>
+</form>
