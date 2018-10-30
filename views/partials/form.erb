@@ -9,7 +9,9 @@
   </div>
   <div class="">
     <label>Description:</label>
-    <input type="text" name="description" value="<%= @book.description%>" placeholder="Enter the description of the book">
+    <textarea name="description" rows="8" cols="80" placeholder= "Enter a description of your book">
+      <%= @book.description%>
+    </textarea>
   </div>
   <div class="">
   <% if (@book.id) %>

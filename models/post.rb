@@ -17,7 +17,17 @@ class Book
     end
     return posts
   end
+# for editing pages
+  def self.find id
+  # connecting to the database
+    conn = self.open_connection
+    sql = "SELECT * FROM books WHERE id = #{id}"
+    result = conn.exec(sql)
 
+    book = self.hydrate result[0]
+    return book
+  end
+# for creating pages
   def self.hydrate book_data
   book = Book.new
   book.title = book_data['title']
@@ -37,6 +47,5 @@ class Book
     end
     conn.exec(sql)
   end
-
 
 end

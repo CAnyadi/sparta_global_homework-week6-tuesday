@@ -28,4 +28,28 @@ class PostController < Sinatra::Base
     redirect "/"
   end
 
+  # editing the page
+  # initial
+  get "/:id_from_URL" do
+    id = params[:id_from_URL].to_i
+    @book = Book.find id
+    erb :'posts/show'
+  end
+
+  get "/:id_from_URL/edit" do
+    id = params[:id_from_URL].to_i
+    @books = Book.find id
+    erb :'posts/edit'
+  end
+
+  put '/:id' do
+    id params[:id].to_i
+    book = Book.find id
+    book.title = params[:title]
+    book.author = params[:author]
+    book.description = params[:description]
+    book.save
+    redirect '/'
+  end
+
 end
