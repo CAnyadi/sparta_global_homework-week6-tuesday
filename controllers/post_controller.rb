@@ -43,7 +43,7 @@ class PostController < Sinatra::Base
   end
 
   put '/:id' do
-    id params[:id].to_i
+    id = params[:id].to_i
     book = Book.find id
     book.title = params[:title]
     book.author = params[:author]
