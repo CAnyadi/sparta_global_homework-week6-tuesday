@@ -1,5 +1,5 @@
 <h1>This is the edit page for <%= @book.title%></h1>
-<%= erb :'partials/form, :layout => false' %>
+<%= erb :'partials/form', :layout => false%>
 
 <form action="/<%= @book.id%>" method="post">
   <input type="hidden" name="_method" value="delete"></input>
