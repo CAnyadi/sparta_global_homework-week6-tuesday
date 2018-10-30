@@ -1,16 +1,18 @@
-<form class="" action="/<%= @post.id%>" method="post">
+<form class="" action="/<%= @book.id%>" method="post">
   <div class="">
     <label>Title</label>
-    <input type="text" value ="<%= @post.title%>" name="title" placeholder="Enter a title">
+    <input type="text" value ="<%= @book.title%>" name="title" placeholder="Enter a title">
   </div>
   <div class="">
-    <label>Body:</label>
-    <textarea name="body" rows="8" cols="80" placeholder= "Enter new body">
-      <%= @post.body%>
-    </textarea>
+    <label>Author:</label>
+    <input type="text" value ="<%= @book.author%>" name="author" placeholder="Enter the name of the author">
   </div>
   <div class="">
-  <% if (@post.id) %>
+    <label>Description:</label>
+    <input type="text" name="description" value="<%= @book.description%>" placeholder="Enter the description of the book">
+  </div>
+  <div class="">
+  <% if (@book.id) %>
     <input type="hidden" name="_method" value="PUT">
     <% end %>
     <input type="submit" value="Save Post">

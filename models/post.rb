@@ -27,4 +27,16 @@ class Book
   return book
   end
 
+  # save function for creating a new page
+  def save
+    conn = Book.open_connection
+    if (!self.id)
+      sql = "INSERT INTO books (title,author,description) VALUES ('#{self.title}', '#{self.author}', '#{self.description}')"
+    else
+      sql = "UPDATE books SET title = '#{self.title}', author = '#{self.author}', description = '#{self.description}' WHERE id = '#{self.id}'"
+    end
+    conn.exec(sql)
+  end
+
+
 end

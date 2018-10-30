@@ -14,10 +14,18 @@ class PostController < Sinatra::Base
   end
 
   get "/new" do
-    @book = Post.new
+    @book = Book.new
     erb :"posts/new"
-  end 
+  end
 
-
+  # post for creating a new page
+  post "/" do
+    book = Book.new
+    book.title = params[:title]
+    book.author = params[:author]
+    book.description = params[:description]
+    book.save
+    redirect "/"
+  end
 
 end
