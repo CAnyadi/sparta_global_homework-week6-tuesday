@@ -6,9 +6,9 @@ class PostController < Sinatra::Base
   configure:development do
     register Sinatra::Reloader
   end
-
+# PUT SPECIFIC ID'S BEFORE THE GENERAL ONES !! I.E /NEW, /
   get "/" do
-    @title_for_the_page = "Title"
+    @title_for_the_page = "Books"
     @book = Book.all
     erb :'posts/index'
   end
@@ -51,5 +51,11 @@ class PostController < Sinatra::Base
     book.save
     redirect '/'
   end
+
+  delete '/:id' do
+    id = params[:id].to_i
+    Book.remove id
+    redirect '/'
+  end 
 
 end

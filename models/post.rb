@@ -6,7 +6,7 @@ class Book
     conn =PG.connect(dbname: "books", user: "postgres", password: "Acad3my1")
   end
 
-#CONN = Connect
+#index for all the pages
   def self.all
     conn = self.open_connection
     sql = "SELECT * FROM books ORDER BY id"
@@ -18,6 +18,7 @@ class Book
     return posts
   end
 # for editing pages
+# selectes info from database with this id
   def self.find id
   # connecting to the database
     conn = self.open_connection
@@ -28,6 +29,7 @@ class Book
     return book
   end
 # for creating pages
+# info in database cannot be viewed on the screen so it converts to a hash
   def self.hydrate book_data
   book = Book.new
   book.title = book_data['title']
@@ -37,7 +39,7 @@ class Book
   return book
   end
 
-  # save function for creating a new page
+  # save function for creating a new page for it to save (update and create)
   def save
     conn = Book.open_connection
     if (!self.id)
@@ -48,4 +50,11 @@ class Book
     conn.exec(sql)
   end
 
+  # deleting the page
+
+  def self.remove id
+    conn = Book.open_connection
+    sql = "DELETE FROM books WHERE id = '#{id}'"
+    conn.exec(sql)
+  end
 end
